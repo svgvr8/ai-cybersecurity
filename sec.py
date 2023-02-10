@@ -1,9 +1,9 @@
 # Importing required libraries
-import plotly.express as px
 import pandas as pd
 import subprocess
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
+import matplotlib.pyplot as plt
 
 # Capturing live packets using Tshark
 result = subprocess.Popen(['tshark', '-r', 'file.pcap', '-T', 'fields', '-e', 'frame.time', '-e', 'ip.src', '-e', 'ip.dst', '-e', 'ip.proto', '-e', 'frame.len'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -39,9 +39,9 @@ if df.shape[0] > 0:
     df = pd.concat([df, pd.DataFrame([{'Time': None, 'Source': None, 'Destination': None, 'Protocol': 17, 'Length': 100, 'Label': predictions[1]}], columns=df.columns)], ignore_index=True)
 
     # Creating a bar chart to show the distribution of traffic by protocol
-    fig = px.bar(df, x='Protocol', y='Length', color='Label', title='Distribution of Traffic by Protocol and Threat Level')
-
-    # Showing the visualization
-    fig.show()
+  #  df.groupby(['Protocol', 'Label']).sum()['Length'].unstack().plot(kind='bar', stacked=True)
+    
+    df.groupby(['Protocol', 'Label']).sum(numeric_only=True)['Length'].unstack().plot(kind='bar', stacked=True)
+    plt.show()
 else:
     print("No data to fit the model")
