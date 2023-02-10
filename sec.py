@@ -4,6 +4,8 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 import matplotlib.pyplot as plt
 from scapy.all import *
+from scapy.layers.inet import IP
+
 
 # Loading the pcap file using Scapy
 packets = rdpcap("file.pcap")
@@ -25,19 +27,21 @@ if df.shape[0] > 0:
     y = df['Label']
     clf = RandomForestClassifier()
     clf.fit(X, y)
-
+    
     # Predicting the labels for new packets
-    new_packets = [{'Length': 1000, 'Protocol': 6},
-                   {'Length': 100, 'Protocol': 17}]
-    new_df = pd.DataFrame(new_packets)
-    predictions = clf.predict(new_df)
-
+    predictions = clf.predict(X)
+    
     # Updating the label column with the predictions
-    df = pd.concat([df, pd.DataFrame([{'Time': None, 'Source': None, 'Destination': None, 'Protocol': 6, 'Length': 1000, 'Label': predictions[0]}], columns=df.columns)], ignore_index=True)
-    df = pd.concat([df, pd.DataFrame([{'Time': None, 'Source': None, 'Destination': None, 'Protocol': 17, 'Length': 100, 'Label': predictions[1]}], columns=df.columns)], ignore_index=True)
+    df['Label'] = predictions
 
     # Creating a bar chart to show the distribution of traffic by protocol
     df.groupby(['Protocol', 'Label']).sum()['Length'].unstack().plot(kind='bar', stacked=True)
+    
+    # Adding labels to the graph
+    plt.xlabel("Network Protocol (UDP, TCP)")
+    plt.ylabel("Bytes")
+    plt.title("Distribution of Traffic by Network Protocol (UDP, TCP) and Maliciousness")
+    
     plt.show()
 else:
     print("No data to fit the model")
