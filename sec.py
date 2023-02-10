@@ -6,10 +6,8 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 
 # Capturing live packets using Tshark
-result = subprocess.Popen(['tshark', '-i', 'eth0', '-T', 'fields', '-e', 'frame.time', '-e', 'ip.src', '-e', 'ip.dst', '-e', 'ip.proto', '-e', 'frame.len'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+result = subprocess.Popen(['tshark', '-r', 'traffic136.pcap', '-T', 'fields', '-e', 'frame.time', '-e', 'ip.src', '-e', 'ip.dst', '-e', 'ip.proto', '-e', 'frame.len'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 output, errors = result.communicate()
-
-print(output) # Add this line to check the output of the Tshark command
 
 # Converting the output of Tshark to a pandas dataframe
 rows = output.splitlines()
@@ -37,8 +35,8 @@ if df.shape[0] > 0:
     predictions = clf.predict(new_df)
 
     # Updating the label column with the predictions
-    df.loc[df.shape[0]] = [None, None, None, None, 1000, 6, predictions[0]]
-    df.loc[df.shape[0]] = [None, None, None, None, 100, 17, predictions[1]]
+    df = pd.concat([df, pd.DataFrame([{'Time': None, 'Source': None, 'Destination': None, 'Protocol': 6, 'Length': 1000, 'Label': predictions[0]}], columns=df.columns)], ignore_index=True)
+    df = pd.concat([df, pd.DataFrame([{'Time': None, 'Source': None, 'Destination': None, 'Protocol': 17, 'Length': 100, 'Label': predictions[1]}], columns=df.columns)], ignore_index=True)
 
     # Creating a bar chart to show the distribution of traffic by protocol
     fig = px.bar(df, x='Protocol', y='Length', color='Label', title='Distribution of Traffic by Protocol and Threat Level')
