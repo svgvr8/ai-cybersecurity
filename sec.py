@@ -6,7 +6,7 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 
 # Capturing live packets using Tshark
-result = subprocess.Popen(['tshark', '-r', 'traffic136.pcap', '-T', 'fields', '-e', 'frame.time', '-e', 'ip.src', '-e', 'ip.dst', '-e', 'ip.proto', '-e', 'frame.len'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+result = subprocess.Popen(['tshark', '-r', 'file.pcap', '-T', 'fields', '-e', 'frame.time', '-e', 'ip.src', '-e', 'ip.dst', '-e', 'ip.proto', '-e', 'frame.len'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 output, errors = result.communicate()
 
 # Converting the output of Tshark to a pandas dataframe
