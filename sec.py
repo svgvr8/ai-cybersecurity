@@ -1,19 +1,17 @@
 # Importing required libraries
 import pandas as pd
-import subprocess
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 import matplotlib.pyplot as plt
+from scapy.all import *
 
-# Capturing live packets using Tshark
-result = subprocess.Popen(['tshark', '-r', 'file.pcap', '-T', 'fields', '-e', 'frame.time', '-e', 'ip.src', '-e', 'ip.dst', '-e', 'ip.proto', '-e', 'frame.len'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-output, errors = result.communicate()
+# Loading the pcap file using Scapy
+packets = rdpcap("file.pcap")
 
-# Converting the output of Tshark to a pandas dataframe
-rows = output.splitlines()
-data = [row.decode().split('\t') for row in rows]
-df = pd.DataFrame(data, columns=['Time', 'Source', 'Destination', 'Protocol', 'Length'])
-df = df.astype({'Length': 'int', 'Protocol': 'int'})
+# Converting the Scapy packets into a pandas dataframe
+df = pd.DataFrame(columns=['Time', 'Source', 'Destination', 'Protocol', 'Length'])
+for packet in packets:
+    df = df.append({'Time': packet.time, 'Source': packet[IP].src, 'Destination': packet[IP].dst, 'Protocol': packet[IP].proto, 'Length': len(packet)}, ignore_index=True)
 
 # Adding a label column to the dataframe
 df['Label'] = np.zeros(df.shape[0])
@@ -39,9 +37,7 @@ if df.shape[0] > 0:
     df = pd.concat([df, pd.DataFrame([{'Time': None, 'Source': None, 'Destination': None, 'Protocol': 17, 'Length': 100, 'Label': predictions[1]}], columns=df.columns)], ignore_index=True)
 
     # Creating a bar chart to show the distribution of traffic by protocol
-  #  df.groupby(['Protocol', 'Label']).sum()['Length'].unstack().plot(kind='bar', stacked=True)
-    
-    df.groupby(['Protocol', 'Label']).sum(numeric_only=True)['Length'].unstack().plot(kind='bar', stacked=True)
+    df.groupby(['Protocol', 'Label']).sum()['Length'].unstack().plot(kind='bar', stacked=True)
     plt.show()
 else:
     print("No data to fit the model")
