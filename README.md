@@ -9,3 +9,6 @@ The following packages must be installed to run the code:
 - pandas
 - plotly
 - scikit-learn
+
+## Generate your own .pcap file
+`` sudo tcpdump -i eth0 -n 'tcp port 80' -w file.pcap ``
