@@ -1,11 +1,6 @@
 from flask import Flask, render_template, request
 import pickle
 import pandas as pd
-import sklearn
-import scipy.sparse
-import os
-
-os.system('/opt/render/project/src/.venv/bin/python -m pip install --upgrade pip')
 
 # Load the model and vectorizer from the pickle files
 with open('data/malicious_model.pkl', 'rb') as file:

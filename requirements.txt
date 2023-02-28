@@ -1,6 +1,5 @@
-flask
-pickle-mixin
-pandas
-scikit-learn
-scipy
-gunicorn
+Flask==2.2.3
+pandas==1.5.3
+pickle-mixin==1.0.2
+scikit-learn==1.2.1
+scipy==1.10.0
