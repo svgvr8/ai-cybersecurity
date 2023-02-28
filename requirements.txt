@@ -2,3 +2,4 @@ flask
 pickle-mixin
 pandas
 sklearn
+scikit-learn
