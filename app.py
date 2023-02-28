@@ -4,10 +4,10 @@ import pandas as pd
 import sklearn
 
 # Load the model and vectorizer from the pickle files
-with open('malicious_model.pkl', 'rb') as file:
+with open('data/malicious_model.pkl', 'rb') as file:
     model = pickle.load(file)
 
-with open('vectorizer.pkl', 'rb') as file:
+with open('data/vectorizer.pkl', 'rb') as file:
     vectorizer = pickle.load(file)
 
 # Initialize the Flask application

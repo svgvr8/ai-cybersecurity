@@ -6,7 +6,7 @@ from sklearn.metrics import accuracy_score
 import pickle
 
 # Load the dataset
-data = pd.read_csv("malicious.csv")
+data = pd.read_csv("data/malicious.csv")
 
 # Split the dataset into train and test sets
 train_data, test_data = train_test_split(data, test_size=0.2, random_state=42)
@@ -18,7 +18,7 @@ vectorizer = TfidfVectorizer()
 vectorizer.fit(train_data['info'])
 
 # Save the vectorizer as a pickle file
-with open('vectorizer.pkl', 'wb') as file:
+with open('data/vectorizer.pkl', 'wb') as file:
     pickle.dump(vectorizer, file)
 
 # Transform the training and test data
@@ -37,7 +37,7 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
 # Save the model as a pickle file
-with open('malicious_model.pkl', 'wb') as file:
+with open('data/malicious_model.pkl', 'wb') as file:
     pickle.dump(model, file)
 
 # Evaluate the model
