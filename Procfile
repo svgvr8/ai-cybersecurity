@@ -1,1 +1,1 @@
-web: gunicorn cyai:app
+web: gunicorn app:app
