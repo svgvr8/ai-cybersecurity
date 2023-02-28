@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Malicious Message Detector</title>
+</head>
+
+<body>
+    <h1>Malicious Message Detector</h1>
+    <form method="POST" action="{{ url_for('predict') }}">
+        <label for="message">Enter your message:</label>
+        <input type="text" name="message" id="message">
+        <button type="submit">Predict</button>
+    </form>
+</body>
+
+</html>
