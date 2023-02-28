@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import pickle
 import pandas as pd
+import sklearn
 
 # Load the model and vectorizer from the pickle files
 with open('malicious_model.pkl', 'rb') as file:
