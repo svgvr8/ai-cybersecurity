@@ -3,3 +3,4 @@ pickle-mixin
 pandas
 sklearn
 scikit-learn
+scipy
