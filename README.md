@@ -1,14 +1,22 @@
-#### Network Traffic Analysis using AI and Python
+#### Malicious Network Packet Classifier using AI and Python
 ## Introduction
-This project aims to analyze network traffic for potential threats by using AI and Python. It uses the Scapy library to capture network packets and the Pandas library to convert the packets into a dataframe. The dataframe is then analyzed using a random forest classifier to predict if a packet is malicious or not based on its length and protocol. The results of the analysis are visualized using Matplotlib.
+This project is a simple Flask application that uses Artificial Intelligence (AI) to classify whether a message is malicious or not. The SVM model was trained on a dataset of 10,000 messages, half of which were labeled as malicious and half as benign. The dataset was preprocessed using a TF-IDF vectorizer.
+
 
 ## Requirements
 The following packages must be installed to run the code:
 
-- scapy
+- flask
 - pandas
-- plotly
 - scikit-learn
+
+Start by installing deps
+
+``pip install flask pandas scikit-learn``
+
+## Run the app
+
+``python app.py``
 
 ## Generate your own .pcap file
 `` sudo tcpdump -i eth0 -n 'tcp port 80' -w file.pcap ``
