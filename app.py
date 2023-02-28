@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import pickle
 import pandas as pd
 import sklearn
-import scipy
+import scipy.sparse
 
 # Load the model and vectorizer from the pickle files
 with open('data/malicious_model.pkl', 'rb') as file:
