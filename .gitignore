@@ -2,3 +2,5 @@
 capture.pcap
 malicious.csv
 __pycache__/wsgi.cpython-310.pyc
+backend/venv/
+node_modules/
