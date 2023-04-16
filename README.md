@@ -58,12 +58,14 @@ pip install -r requirements.txt
 Start the backend Python script by running the following command in folder backend:
 
 
-```python app.py
+```
+python app.py
 
 ```
 6. This will start the Python backend script, which uses machine learning algorithms to classify network packets.
 
 Start the frontend by navigating to cyai folder and running the following command in folder server:
+
 ``` cd cyai ```
 
 ``` npm i ```
