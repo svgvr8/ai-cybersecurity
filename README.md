@@ -19,7 +19,7 @@ git clone https://github.com/svgvr8/AI-forensic-cybersecurity
 
 ```
 
-2. Change the current working directory to folder cyai using the following command:
+2. Change the current working directory to folder backend using the following command:
 
 ```
 cd backend
