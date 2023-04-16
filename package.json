@@ -10,7 +10,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "cd frontend && react-scripts start",
+    "start": "concurrently \"cd backend && python app.py\" \"cd frontend && npm start\"",
     "backend": "cd backend && venv/bin/activate && python app.py",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -33,5 +33,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
   }
 }
