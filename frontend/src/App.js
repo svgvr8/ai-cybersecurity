@@ -24,6 +24,10 @@ function App() {
     }
   };
 
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text);
+  };
+
   return (
     <div className="App">
       <h1>Malicious Network Packet Classifier</h1>
@@ -46,7 +50,9 @@ function App() {
       )}
       <div className="sample-text">
         <pre>Try: 47.597546	10.4.10.132	217.182.138.150	HTTP	392	GET /proforma/7yuebftyriq2gy6wq.exe HTTP/1.1</pre>
+        <button onClick={() => copyToClipboard('47.597546\t10.4.10.132\t217.182.138.150\tHTTP\t392\tGET /proforma/7yuebftyriq2gy6wq.exe HTTP/1.1')}>Copy</button>
         <pre>Try: 42.262018	10.4.10.132	10.4.10.4	SMB2	126	Tree Disconnect Request</pre>
+        <button onClick={() => copyToClipboard('42.262018\t10.4.10.132\t10.4.10.4\tSMB2\t126\tTree Disconnect Request')}>Copy</button>
       </div>
     </div>
   );
