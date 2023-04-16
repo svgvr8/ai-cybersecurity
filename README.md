@@ -22,7 +22,7 @@ git clone https://github.com/svgvr8/AI-forensic-cybersecurity
 2. Change the current working directory to folder cyai using the following command:
 
 ```
-cd cyai
+cd backend
 ```
 
 3. Create a virtual environment for the Python backend script using the following command:
