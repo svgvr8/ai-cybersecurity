@@ -3,3 +3,4 @@ pandas
 pickle-mixin
 scikit-learn
 Gunicorn
+flask_cors
