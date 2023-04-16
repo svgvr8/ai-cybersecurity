@@ -10,7 +10,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "cd cyai && react-scripts start",
+    "start": "cd frontend && react-scripts start",
     "backend": "cd backend && venv/bin/activate && python app.py",
     "build": "react-scripts build",
     "test": "react-scripts test",
