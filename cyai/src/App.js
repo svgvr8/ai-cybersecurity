@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Malicious Text Classifier</h1>
+      <h1>Malicious Network Packet Classifier</h1>
       <textarea
         rows="10"
         cols="50"
@@ -31,7 +31,7 @@ function App() {
         placeholder="Enter text to classify"
       ></textarea>
       <br />
-      <button onClick={classifyText}>Classify Text</button>
+      <button onClick={classifyText}>Classify Packet</button>
       {classificationResult && (
         <p>
           The text is <strong>{classificationResult}</strong>.
