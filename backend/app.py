@@ -19,9 +19,14 @@ def classify():
     text = request.json['text']
     input_vector = vectorizer.transform([text])
     prediction = model.predict(input_vector)
-    result = 'Malicious' if prediction[0] else 'Benign'
-    return jsonify({'result': result})
+    confidence = abs(model.decision_function(input_vector)[0])
+
+    if (prediction[0] and confidence >= 0.50) or (not prediction[0] and confidence < 0.50):
+        result = 'Malicious'
+    else:
+        result = 'Benign'
+    
+    return jsonify({'result': result, 'confidence': confidence})
 
 if __name__ == '__main__':
     app.run(debug=True)
-

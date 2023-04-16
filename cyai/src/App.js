@@ -5,6 +5,7 @@ import './App.css';
 function App() {
   const [inputText, setInputText] = useState('');
   const [classificationResult, setClassificationResult] = useState('');
+  const [confidence, setConfidence] = useState(null);
 
   const classifyText = async () => {
     try {
@@ -13,6 +14,7 @@ function App() {
       });
 
       setClassificationResult(response.data.result);
+      setConfidence(response.data.confidence.toFixed(2));
     } catch (error) {
       console.error('Error classifying text:', error);
     }
@@ -33,6 +35,8 @@ function App() {
       {classificationResult && (
         <p>
           The text is <strong>{classificationResult}</strong>.
+          <br />
+          Confidence: {confidence}
         </p>
       )}
     </div>
