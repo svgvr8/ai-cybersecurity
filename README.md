@@ -66,7 +66,7 @@ python app.py
 
 Start the frontend by navigating to cyai folder and running the following command in folder server:
 
-``` cd cyai ```
+``` cd frontend ```
 
 ``` npm i ```
 
