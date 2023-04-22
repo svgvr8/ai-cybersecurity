@@ -40,6 +40,6 @@ y_pred = model.predict(X_test)
 with open('data/malicious_model.pkl', 'wb') as file:
     pickle.dump(model, file)
 
-# Evaluate the model
+# Evaluate the model and print in percentage
 accuracy = accuracy_score(y_test, y_pred)
 print("Accuracy on the above dataset: {:.0f}%".format(accuracy * 100))
