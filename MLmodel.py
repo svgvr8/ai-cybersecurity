@@ -42,4 +42,4 @@ with open('data/malicious_model.pkl', 'wb') as file:
 
 # Evaluate the model
 accuracy = accuracy_score(y_test, y_pred)
-print("Accuracy:", accuracy)
+print("Accuracy on the above dataset: {:.0f}%".format(accuracy * 100))
