@@ -1,6 +1,6 @@
-# Network Packet Classification with AI
+# BrowserSOC: Network Security Tool with AI
 
-This project helps classify network packets using artificial intelligence (AI) for better forensic analysis. It consists of a frontend application in folder cyai, a backend Python script in folder backend, and a server in folder server.
+An in-browser network security tool that uses machine learning classfication model to detect malicious activity. This app captures network data and auto analyzes them for security.
 
 ## Requirements
 
