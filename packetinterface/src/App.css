@@ -1,10 +1,22 @@
-table {
-	width: 100%;
+.App {
+	text-align: center;
+	font-family: 'Arial', sans-serif;
+  }
+  
+  .App-header {
+	background-color: #282c34;
+	color: white;
+	padding: 20px;
+	font-size: 24px;
+  }
+  
+  table {
+	margin: 20px auto;
 	border-collapse: collapse;
   }
   
   th, td {
-	border: 1px solid black;
+	border: 1px solid #ddd;
 	padding: 8px;
 	text-align: left;
   }
@@ -18,3 +30,88 @@ table {
 	background-color: #f2f2f2;
   }
   
+  tr:hover {
+	background-color: #ddd;
+  }
+  
+
+.protocol-1 { background-color: lightblue; } 
+.protocol-2 { background-color: lightgreen; } 
+
+
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+  }
+  
+  tr {
+	animation: fadeIn 1s;
+  }
+  
+  /* Add this CSS to your stylesheet (e.g., App.css) */
+
+/* Styles for the loading message */
+.loading-message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	font-size: 20px;
+	color: #555;
+  }
+  
+  /* Styles for the PacketViewer component */
+  .packet-viewer {
+	text-align: center;
+	font-family: 'Arial', sans-serif;
+  }
+  
+  /* Styling for the heading */
+  .packet-viewer h1 {
+	color: #333;
+	margin-bottom: 20px;
+  }
+  
+  /* Table styling */
+  .packet-viewer table {
+	margin: 0 auto;
+	width: 90%;
+	border-collapse: collapse;
+  }
+  
+  .packet-viewer th,
+  .packet-viewer td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
+  }
+  
+  .packet-viewer th {
+	background-color: #4CAF50;
+	color: white;
+  }
+  
+  .packet-viewer tr:nth-child(even) {
+	background-color: #f2f2f2;
+  }
+  /* Refresh Button Styles */
+.packet-viewer button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding around the text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Cursor changes to pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    margin-top: 10px; /* Margin at the top */
+}
+
+.packet-viewer button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+.packet-viewer button:disabled {
+    background-color: #ccc; /* Grayed out when disabled */
+    cursor: not-allowed; /* Cursor indicates button is disabled */
+}
